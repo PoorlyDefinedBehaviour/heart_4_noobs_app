@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:heart_4_noobs/core/types/failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:heart_4_noobs/domain/cache.dart';
+import 'package:heart_4_noobs/domain/infra/cache.dart';
 import 'package:heart_4_noobs/locator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

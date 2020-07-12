@@ -3,4 +3,5 @@ class Routes {
   static const configuration = "configuration";
   static const information = "information";
   static const discord = "discord";
+  static const home = "home";
 }
