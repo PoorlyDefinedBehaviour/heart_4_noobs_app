@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 
-final defaultTheme = ThemeData(
-    // Define the default brightness and colors.
-    brightness: Brightness.dark,
-    backgroundColor: Color(0xff9163CC),
-    accentColor: Colors.cyan[600],
+final _primaryColor = Color(0xff9163CC);
 
-    // Define the default font family.
-    fontFamily: 'SF Pro Text',
-
-    // Define the default TextTheme. Use this to specify the default
-    // text styling for headlines, titles, bodies of text, and more.
+final defaultTheme = ThemeData.light().copyWith(
+    primaryColor: _primaryColor,
     textTheme: TextTheme(
-      headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-      headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
-      bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+      headline1: TextStyle().copyWith(
+          fontSize: 45, color: Colors.white, fontWeight: FontWeight.bold),
+      bodyText2: TextStyle().copyWith(
+          fontSize: 21, color: Colors.white, fontWeight: FontWeight.w700),
+      button: TextStyle(color: _primaryColor, fontWeight: FontWeight.bold),
     ));
