@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:heart_4_noobs/core/types/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:heart_4_noobs/domain/cache.dart';
+import 'package:heart_4_noobs/locator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesCacheFailure extends Failure {
@@ -12,21 +13,18 @@ class SharedPreferencesCacheFailure extends Failure {
 }
 
 class SharedPreferencesCache implements Cache {
-  Future<SharedPreferences> _sharedPreferences =
-      SharedPreferences.getInstance();
+  SharedPreferences _sharedPreferences = locator<SharedPreferences>();
 
   @override
-  Future<Option<String>> get(String key) async {
-    final value =
-        await _sharedPreferences.then((instance) => instance.getString(key));
+  Future<Option<String>> getValue(String key) async {
+    final value = _sharedPreferences.getString(key);
     return value == null ? None() : Some(value);
   }
 
   @override
-  Future<Either<Failure, Unit>> set(
+  Future<Either<Failure, Unit>> setValue(
       final String key, final String value) async {
-    final success = await _sharedPreferences
-        .then((instance) => instance.setString(key, value));
+    final success = await _sharedPreferences.setString(key, value);
     return success
         ? Right(unit)
         : Left(SharedPreferencesCacheFailure(reason: "failed to set $key"));

@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:heart_4_noobs/core/constants/routes.dart';
 import 'package:heart_4_noobs/core/themes/theme.dart';
+import 'package:heart_4_noobs/locator.dart';
 import 'package:provider/provider.dart';
 import 'package:heart_4_noobs/presentation/login/pages/welcome_page.dart';
 
-void main() => runApp(
-      MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => ThemeModel()),
-        ],
-        child: App(),
-      ),
-    );
+void main() async {
+  await setupLocator();
+
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ThemeModel()),
+      ],
+      child: App(),
+    ),
+  );
+}
 
 class App extends StatelessWidget {
   @override
