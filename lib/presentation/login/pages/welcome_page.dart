@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:heart_4_noobs/core/themes/theme.dart';
+import 'package:heart_4_noobs/presentation/login/login_page_provider.dart';
+import 'package:heart_4_noobs/presentation/login/widgets/page_dots.dart';
 import 'package:provider/provider.dart';
-import '../../widgets/primary_button.dart';
+import '../../widgets/rounded_button.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -25,42 +27,23 @@ class WelcomePage extends StatelessWidget {
                 height: 40,
               ),
               Text(
-                "Nesse aplicativo você tem acesso a\ntodos repositórios dos membros da He4rt Developers",
+                '''Nesse aplicativo você tem acesso a
+todos repositórios dos membros da He4rt Developers''',
                 style: theme.textTheme.bodyText2,
                 textAlign: TextAlign.center,
               ),
               SizedBox(
                 height: 50,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Icon(
-                    Icons.fiber_manual_record,
-                    color: Colors.grey,
-                    size: 15,
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Icon(
-                    Icons.fiber_manual_record,
-                    color: Colors.white,
-                    size: 15,
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Icon(
-                    Icons.fiber_manual_record,
-                    color: Colors.white,
-                    size: 15,
-                  ),
-                ],
-              ),
+              PageDots(
+                  selectedPageIndex:
+                      Provider.of<LoginPageModel>(context, listen: false)
+                          .selectedPageIndex),
               SizedBox(height: 10),
-              PrimaryButton(
-                onPressed: () => {},
+              RoundedButton(
+                onPressed: () =>
+                    Provider.of<LoginPageModel>(context, listen: false)
+                        .nextPressed(context),
                 child: Text(
                   "PRÓXIMO",
                   style: TextStyle(

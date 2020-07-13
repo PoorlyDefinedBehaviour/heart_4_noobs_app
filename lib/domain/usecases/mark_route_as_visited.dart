@@ -5,7 +5,7 @@ import 'package:heart_4_noobs/locator.dart';
 import 'package:heart_4_noobs/domain/infra/cache.dart';
 
 class MarkRouteAsVisited {
-  Cache _cache = locator<Cache>();
+  final _cache = locator<Cache>();
 
   Future<void> call(final String route) async {
     final cacheValued = await _cache.getValue(CacheKeys.visitedRoutes);

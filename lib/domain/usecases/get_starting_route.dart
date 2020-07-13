@@ -6,7 +6,7 @@ import 'package:heart_4_noobs/domain/infra/cache.dart';
 import 'package:heart_4_noobs/locator.dart';
 
 class GetStartingRoute {
-  Cache _cache = locator<Cache>();
+  final _cache = locator<Cache>();
 
   Future<String> call() async {
     final cacheValued = await _cache
@@ -18,13 +18,7 @@ class GetStartingRoute {
       (visitedRoutes) {
         final routes = visitedRoutes.toSet();
 
-        return [
-          Routes.welcome,
-          Routes.configuration,
-          Routes.information,
-          Routes.discord,
-          Routes.home
-        ].firstWhere((route) => !routes.contains(route));
+        return Routes.toList().firstWhere((route) => !routes.contains(route));
       },
     );
   }
